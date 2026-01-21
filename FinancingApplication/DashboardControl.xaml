@@ -1,0 +1,74 @@
+﻿<UserControl x:Class="FinancingApplication.FinancingAppView.DashboardControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:FinancingApplication.FinancingAppView"
+             xmlns:sys="clr-namespace:System;assembly=mscorlib"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="6*"/>
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.Resources>
+            <Style TargetType="TextBlock">
+                <Setter Property="FontSize" Value="16"/>
+                <Setter Property="HorizontalAlignment" Value="Center"/>
+                <Setter Property="VerticalAlignment" Value="Center"/>
+            </Style>
+            <Style TargetType="TextBox">
+                <Setter Property="FontSize" Value="16"/>
+                <Setter Property="Width" Value="50"/>
+                <Setter Property="MaxWidth" Value="50"/>
+                <Setter Property="HorizontalAlignment" Value="Center"/>
+                <Setter Property="VerticalAlignment" Value="Center"/>
+            </Style>
+        </Grid.Resources>
+
+        <StackPanel Grid.Row="0" Grid.Column="0">
+            <TextBlock Text="Assets"/>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <TextBlock Text="Checking Balance: $"/>
+                <TextBox x:Name="CheckingAmntBox" Text="{Binding CheckingAmnt, Mode=TwoWay}"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <TextBlock Text="Savings Balance: $"/>
+                <TextBox x:Name="SavingsAmntBox" Text="{Binding SavingsAmnt, Mode=TwoWay}"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <TextBlock Text="Cash Balance: $"/>
+                <TextBox x:Name="CashAmntBox" Text="{Binding CashAmnt, Mode=TwoWay}"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <TextBlock Text="Other Assets: $"/>
+                <TextBox x:Name="OtherAmntBox" Text="{Binding OtherAmnt, Mode=TwoWay}"/>
+            </StackPanel>
+        </StackPanel>
+        <StackPanel Grid.Row="1" Grid.Column="0" Orientation="Horizontal" HorizontalAlignment="Center">
+            <TextBlock Text="Total Balance: $"/>
+            <TextBlock Text="{Binding TotalBalance}"/>
+        </StackPanel>
+
+        <StackPanel Grid.Row="0" Grid.Column="1">
+            <TextBlock Text="Goals"/>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <TextBlock Text="Goal Price: $"/>
+                <TextBox x:Name="GoalPriceBox"  Text="{Binding GoalPrice, Mode=TwoWay}"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <TextBlock Text="Target Date: "/>
+                <DatePicker SelectedDate="{Binding Deadline, Mode=TwoWay}" DisplayDateStart="{x:Static sys:DateTime.Today}"/>
+            </StackPanel>
+        </StackPanel>
+        <StackPanel Grid.Row="1" Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Center">
+            <TextBlock Text="Amount Needed: $"/>
+            <TextBlock Text="{Binding AmntNeeded}"/>
+        </StackPanel>
+    </Grid>
+</UserControl>
